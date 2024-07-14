@@ -4,7 +4,7 @@ import Navigation from '../Navigation/Navigation';
 import '../../../index.css';
 import css from './App.module.css';
 
-const HomePage = lazy(() => import('../../pages/HomePage/HomePage.js'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
 const MoviesPage = lazy(() => import('../../pages/MoviesPage/MoviesPage.jsx'));
 const MovieCast = lazy(() => import('../MovieCast/MovieCast.jsx'));
 const MovieReviews = lazy(() => import('../MovieReviews/MovieReviews.jsx'));

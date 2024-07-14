@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import MovieList from '../../src/components/MovieList/MovieList';
-import { getTrendedMovies } from '../../src/movies-api';
+import MovieList from '../../components/MovieList/MovieList.jsx';
+import { getTrendedMovies } from '../../movies-api.js';
 import css from './HomePage.module.css';
 
 export default function HomePage() {
