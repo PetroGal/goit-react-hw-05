@@ -1,34 +1,39 @@
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getMovieDetails } from '../../src/homepage-api';
+import { getMovieDetails } from '../../src/movies-api';
 import css from './MovieDetailsPage.module.css';
+import { GoBackBtn } from '../../src/components/GoBackBtn/GoBackBtn';
 
 export default function MovieDetailsPage() {
-  const { id } = useParams();
+  const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
+  const location = useLocation();
+
+  const goBackPath = location?.state?.from ?? '/';
 
   useEffect(() => {
     async function fetchMovieDetails() {
       try {
-        const data = await getMovieDetails(id);
+        const data = await getMovieDetails(movieId);
         setMovie(data);
-        setLoading(false);
+        setLoader(false);
       } catch (error) {
         setError(error.message);
-        setLoading(false);
+        setLoader(false);
       }
     }
     fetchMovieDetails();
-  }, [id]);
+  }, [movieId]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loader) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!movie) return <div>Movie not found</div>;
 
   return (
     <div className={css.container}>
+      <GoBackBtn path={goBackPath}>Go Back</GoBackBtn>
       <div className={css.detailsWrap}>
         <img
           className={css.movieImage}
@@ -49,15 +54,19 @@ export default function MovieDetailsPage() {
         <p className={css.text}>Additional information</p>
         <ul className={css.list}>
           <li>
-            <NavLink to="cast">Cast</NavLink>
+            <NavLink className={css.castItem} to="cast">
+              Cast
+            </NavLink>
           </li>
           <li>
-            <NavLink to="reviews">Reviews</NavLink>
+            <NavLink className={css.reviewItem} to="reviews">
+              Reviews
+            </NavLink>
           </li>
         </ul>
+        <div className={css.grad}></div>
         <Outlet />
       </div>
-      <div className={css.grad}></div>
     </div>
   );
 }

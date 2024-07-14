@@ -32,10 +32,10 @@ ol {
   list-style: none;
 }
 
-/* a {
-  color: currentColor;
-  text-decoration: none;
-} */
+a {
+  /* color: currentColor; */
+  /* text-decoration: none; */
+}
 
 button {
   cursor: pointer;
