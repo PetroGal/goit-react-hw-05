@@ -1,8 +1,8 @@
 import css from './MoviesPage.module.css';
-import SearchMovie from '../../src/components/SearchMovie/SearchMovie.jsx';
+import SearchMovie from '../../components/SearchMovie/SearchMovie.jsx';
 import { useState, useEffect } from 'react';
-import MovieList from '../../src/components/MovieList/MovieList.jsx';
-import { searchMovies } from '../../src/movies-api.js';
+import MovieList from '../../components/MovieList/MovieList.jsx';
+import { searchMovies } from '../../movies-api.js';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);

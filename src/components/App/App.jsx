@@ -4,12 +4,12 @@ import Navigation from '../Navigation/Navigation';
 import '../../../index.css';
 import css from './App.module.css';
 
-const HomePage = lazy(() => import('../../../pages/HomePage/HomePage'));
-const MoviesPage = lazy(() => import('../../../pages/MoviesPage/MoviesPage'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage.js'));
+const MoviesPage = lazy(() => import('../../pages/MoviesPage/MoviesPage.jsx'));
 const MovieCast = lazy(() => import('../MovieCast/MovieCast.jsx'));
 const MovieReviews = lazy(() => import('../MovieReviews/MovieReviews.jsx'));
 const MovieDetailsPage = lazy(() =>
-  import('../../../pages/MovieDetailsPage/MovieDetailsPage')
+  import('../../pages/MovieDetailsPage/MovieDetailsPage.jsx')
 );
 const NotFoundPage = lazy(() => import('../NotFoundPage/NotFoundPage.jsx'));
 

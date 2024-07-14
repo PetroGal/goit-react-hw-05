@@ -1,8 +1,8 @@
 import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getMovieDetails } from '../../src/movies-api';
+import { getMovieDetails } from '../../movies-api';
 import css from './MovieDetailsPage.module.css';
-import { GoBackBtn } from '../../src/components/GoBackBtn/GoBackBtn';
+import { GoBackBtn } from '../../components/GoBackBtn/GoBackBtn';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
