@@ -1,16 +1,19 @@
-import css from './MoviesPage.module.css';
-import SearchMovie from '../../components/SearchMovie/SearchMovie.jsx';
+import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import SearchMovie from '../../components/SearchMovie/SearchMovie.jsx';
 import MovieList from '../../components/MovieList/MovieList.jsx';
 import { searchMovies } from '../../movies-api.js';
+import css from './MoviesPage.module.css';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
+    const query = searchParams.get('query') || '';
     if (!query) return;
     async function fetchMovies() {
       try {
@@ -23,10 +26,10 @@ export default function MoviesPage() {
       }
     }
     fetchMovies();
-  }, [query]);
+  }, [searchParams]);
 
   const handleSearch = value => {
-    setQuery(value);
+    setSearchParams({ query: value });
   };
 
   return (
